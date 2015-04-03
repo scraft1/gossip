@@ -12,22 +12,22 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-Route::get('home', 'HomeController@index');
-Route::get('about', 'PagesController@about');
 
-Route::get('tasks', 'TasksController@index');
+Route::get('users', 'TestController@users');
+Route::get('want', 'TestController@want');
+Route::get('rumor', 'TestController@rumor');
 
-Route::resource('emails', 'EmailController');
+Route::get('peers', 'PeersController@index');
+Route::get('peers/create', 'PeersController@create');
+Route::post('peers', 'PeersController@store');
 
-Route::get('days', 'DaysController@index');
-Route::get('days/{day}', 'DaysController@show');
+Route::get('messages', 'MessagesController@index');
+Route::post('messages', 'MessagesController@store');
+Route::post('receive/{x}', 'MessagesController@receive');
+Route::post('send', 'MessagesController@send');
 
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
-Route::get('foo', ['middleware' => 'instructor', function(){
-	return 'this page may only be viewed by instructor';
-}]);

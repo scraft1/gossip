@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use \App\Peer;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -22,7 +23,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name', 'email', 'password', 'originator', 'url', 'message_id', 'sequence'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -31,12 +32,25 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
-	public function emails(){
-		return $this->hasMany('App\Email');
+	public function messages(){
+		return $this->hasMany('App\Message');
 	}
 
-	public function isAnInstructor(){
-		return true;
+	public function peers(){
+		return $this->hasMany('App\Peer');
 	}
 
+	public function sequences(){
+		return $this->hasMany('App\Sequence');
+	}
+
+	public function incrementSequence(){
+		$u = \Auth::user();
+		$u->sequence = $u->sequence + 1;
+		$u->save();
+	}
+
+	public function getPeer(){
+		return $this->peers->random(1);
+	}
 }
