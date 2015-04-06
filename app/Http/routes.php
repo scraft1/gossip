@@ -31,3 +31,10 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+
+// CREATIVITY PROJECT
+Route::get('paintings/quiz', 'PaintingsController@quiz');
+Route::get('paintings/artists', 'PaintingsController@artists');
+Route::get('paintings/artists/{x}', 'PaintingsController@artist');
+Route::resource('paintings', 'PaintingsController');
