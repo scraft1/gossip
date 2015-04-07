@@ -66,7 +66,7 @@ class PaintingsController extends Controller {
 
 	public function artists(){ 
 		$artists = array_unique(Painting::lists('artist'));
-
+		asort($artists);
 		return view('paintings.artists', compact('artists'));
 	}
 

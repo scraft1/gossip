@@ -12,10 +12,10 @@
     <td>Artist:</td><td>{{$painting->artist}}</td>
   </tr>
   <tr>
-  	<td>Title:</td><td>{{$painting->title}}</td>
+  	<td>Title:</td><td><i>"{{$painting->title}}"</i></td>
   </tr>
   <tr>
-  	<td>Notes:&nbsp;</td><td>{{$painting->notes}}</td>
+  	<td>Notes:&nbsp;&nbsp;&nbsp;</td><td style="padding-top:10px">{!! nl2br(e($painting->notes)) !!}</td>
   </tr>    
 </table>
 <br>
