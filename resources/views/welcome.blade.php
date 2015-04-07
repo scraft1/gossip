@@ -38,7 +38,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Lab 5: Gossip Protocol</div>
+				<div class="title">Welcome!</div>
 			</div>
 		</div>
 	</body>
